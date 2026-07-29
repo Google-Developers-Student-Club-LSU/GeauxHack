@@ -1,3 +1,44 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+@theme {
+  --color-crimson: #A4243B;
+  --color-sand: #D8C99B;
+  --color-amber: #D8973C;
+  --color-rust: #BD632F;
+  --color-slate: #273E47;
+}
+
+html,
+body {
+  overscroll-behavior-y: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+ 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+ 
+.reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+ 
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
