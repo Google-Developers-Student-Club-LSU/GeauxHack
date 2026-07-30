@@ -99,18 +99,16 @@
     class="flex h-dvh w-full flex-col items-center justify-center overflow-y-auto px-6 text-center md:px-10"
   >
     <div use:reveal class="mx-auto max-w-3xl">
-      <div class="mx-auto mb-10 flex h-56 w-56 items-center justify-center rounded-full border-2 border-dashed border-sand/30 text-sm text-sand/40">
-        Hero graphic
-      </div>
+      <div class="mx-auto mb-10 flex h-56 w-56 items-center justify-center rounded-full border-2 border-dashed border-sand/30 text-sm text-sand/40"></div>
 
-      <h1 class="text-5xl font-bold text-amber md:text-7xl">GeauxHack '26</h1>
-      <p class="mt-4 text-sand/70 md:text-lg">T-minus</p>
+      <h1 class="glow-amber font-display text-5xl font-bold text-amber md:text-7xl">GeauxHack '26</h1>
+      <p class="font-mono-retro mt-4 text-xs uppercase tracking-[0.3em] text-sand/70 md:text-sm">T-minus</p>
 
-      <div class="mt-10 flex items-center justify-center gap-4 sm:gap-8">
+      <div class="mt-10 flex items-center justify-center gap-3 sm:gap-6">
         {#each countdownParts as part}
-          <div class="flex flex-col items-center">
-            <span class="text-4xl font-bold text-amber sm:text-6xl">{part.value.toString().padStart(2, '0')}</span>
-            <span class="mt-1 text-xs uppercase tracking-widest text-sand/60">{part.label}</span>
+          <div class="flex flex-col items-center gap-2 rounded-md border border-amber/30 bg-slate/80 px-4 py-3 sm:px-6 sm:py-4">
+            <span class="font-mono-retro glow-amber text-3xl font-bold text-amber sm:text-5xl">{part.value.toString().padStart(2, '0')}</span>
+            <span class="font-mono-retro text-[0.65rem] uppercase tracking-[0.25em] text-sand/60">{part.label}</span>
           </div>
         {/each}
       </div>
@@ -127,7 +125,7 @@
     >
       <div class="mx-auto mb-8 h-40 w-40 rounded-full border-2 border-dashed border-sand/30"></div>
 
-      <h1 class="text-4xl font-bold text-amber md:text-5xl">About</h1>
+      <h1 class="font-display text-4xl font-bold text-amber md:text-5xl">About</h1>
       <p class="mt-5 max-w-prose text-sand/90 md:text-lg">
         hackathon
       </p>
@@ -137,7 +135,7 @@
 
       <a
         href="#apply"
-        class="mt-10 inline-block rounded-full bg-crimson px-8 py-3 font-semibold text-sand transition hover:bg-rust"
+        class="font-display mt-10 inline-block rounded-full bg-crimson px-8 py-3 font-semibold text-sand transition hover:bg-rust"
       >
         Apply Now
       </a>
@@ -149,7 +147,7 @@
     class="flex h-dvh w-full flex-col items-center justify-center overflow-y-auto px-6 md:px-10"
   >
     <div class="mx-auto max-w-6xl">
-      <h2 use:reveal class="text-center text-4xl font-bold text-amber md:text-5xl">Tracks</h2>
+      <h2 use:reveal class="text-center font-display text-4xl font-bold text-amber md:text-5xl">Tracks</h2>
 
       <div class="mt-16 flex flex-wrap justify-center gap-6">
         {#each tracks as track, i}
@@ -159,7 +157,7 @@
           >
             <div class="h-20 w-20 rounded-full border-2 border-dashed border-amber/40"></div>
             <p class="font-semibold text-sand">{track.name}</p>
-            <p class="text-sm text-sand/60">{track.category}</p>
+            <p class="font-mono-retro text-xs uppercase tracking-[0.15em] text-sand/60">{track.category}</p>
           </div>
         {/each}
       </div>
@@ -171,7 +169,7 @@
     class="flex h-dvh w-full flex-col items-center justify-center overflow-y-auto px-6 text-center md:px-10"
   >
     <div class="mx-auto max-w-6xl">
-      <h2 use:reveal class="text-4xl font-bold text-amber md:text-5xl">Sponsors</h2>
+      <h2 use:reveal class="font-display text-4xl font-bold text-amber md:text-5xl">Sponsors</h2>
       <p use:reveal={{ delay: 80 }} class="mt-6 text-sand/70">Coming soon.</p>
 
       <div class="mt-14 flex flex-wrap justify-center gap-6">
@@ -192,7 +190,7 @@
     class="flex h-dvh w-full flex-col items-center justify-center overflow-y-auto px-6 md:px-10"
   >
     <div class="mx-auto w-full max-w-5xl">
-      <h2 use:reveal class="text-center text-4xl font-bold text-amber md:text-5xl">FAQ</h2>
+      <h2 use:reveal class="text-center font-display text-4xl font-bold text-amber md:text-5xl">FAQ</h2>
 
       <div class="mt-16 space-y-4">
         {#each faqs as faq, i}
@@ -215,14 +213,14 @@
     class="flex h-dvh w-full flex-col items-center justify-center overflow-y-auto px-6 md:px-10"
   >
     <div use:reveal class="mx-auto w-full max-w-xl rounded-2xl border border-amber/30 bg-crimson/10 p-10 md:p-14">
-      <h2 class="text-center text-4xl font-bold text-amber md:text-5xl">Apply</h2>
+      <h2 class="text-center font-display text-4xl font-bold text-amber md:text-5xl">Apply</h2>
       <p class="mt-4 text-center text-sm text-sand/70">
         Once you have filled out the form, you will be taken to the GDG RSVP page to complete registration.
       </p>
 
       <form onsubmit={handleApplySubmit} class="mt-8 flex flex-col gap-5">
         <div>
-          <label for="apply-name" class="block text-sm font-semibold text-sand">Name</label>
+          <label for="apply-name" class="font-mono-retro block text-xs uppercase tracking-[0.15em] text-sand">Name</label>
           <input
             id="apply-name"
             type="text"
@@ -233,7 +231,7 @@
         </div>
 
         <div>
-          <label for="apply-email" class="block text-sm font-semibold text-sand">Email</label>
+          <label for="apply-email" class="font-mono-retro block text-xs uppercase tracking-[0.15em] text-sand">Email</label>
           <input
             id="apply-email"
             type="email"
@@ -244,7 +242,7 @@
         </div>
 
         <div>
-          <label for="apply-team" class="block text-sm font-semibold text-sand">Team Name</label>
+          <label for="apply-team" class="font-mono-retro block text-xs uppercase tracking-[0.15em] text-sand">Team Name</label>
           <input
             id="apply-team"
             type="text"
@@ -254,7 +252,7 @@
         </div>
 
         <div>
-          <label for="apply-track" class="block text-sm font-semibold text-sand">Track</label>
+          <label for="apply-track" class="font-mono-retro block text-xs uppercase tracking-[0.15em] text-sand">Track</label>
           <select
             id="apply-track"
             required
@@ -269,7 +267,7 @@
         </div>
 
         <div>
-          <label for="apply-division" class="block text-sm font-semibold text-sand">Division</label>
+          <label for="apply-division" class="font-mono-retro block text-xs uppercase tracking-[0.15em] text-sand">Division</label>
           <select
             id="apply-division"
             required
@@ -284,7 +282,7 @@
         </div>
 
         <div>
-          <label for="apply-shirt-size" class="block text-sm font-semibold text-sand">Shirt Size</label>
+          <label for="apply-shirt-size" class="font-mono-retro block text-xs uppercase tracking-[0.15em] text-sand">Shirt Size</label>
           <select
             id="apply-shirt-size"
             required
@@ -302,7 +300,7 @@
         </div>
 
         <div>
-          <label for="apply-dietary" class="block text-sm font-semibold text-sand">Dietary Restrictions</label>
+          <label for="apply-dietary" class="font-mono-retro block text-xs uppercase tracking-[0.15em] text-sand">Dietary Restrictions</label>
           <input
             id="apply-dietary"
             type="text"
@@ -319,7 +317,7 @@
         <button
           type="submit"
           disabled={submitting}
-          class="mt-4 rounded-full bg-crimson px-8 py-3 font-semibold text-sand transition hover:bg-rust disabled:opacity-60"
+          class="font-display mt-4 rounded-full bg-crimson px-8 py-3 font-semibold text-sand transition hover:bg-rust disabled:opacity-60"
         >
           {submitting ? 'Submitting...' : 'Continue to RSVP'}
         </button>

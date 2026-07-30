@@ -27,9 +27,9 @@
 </script>
 
 <header class="fixed inset-x-0 top-0 z-50 border-b border-sand/10 bg-slate/70 backdrop-blur-md">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
-    <a href="#home" onclick={(e) => goTo(e, '#home')} class="text-lg font-bold tracking-wide text-amber">
-        GeauxHack '26
+  <div class="flex w-full items-center justify-between px-6 py-4 md:px-12 lg:px-20">
+    <a href="#home" onclick={(e) => goTo(e, '#home')} class="font-display text-lg font-bold tracking-wide text-amber">
+      GeauxHack '26
     </a>
 
     <nav class="hidden items-center gap-8 md:flex">
@@ -37,7 +37,7 @@
         <a
           href={link.href}
           onclick={(e) => goTo(e, link.href)}
-          class="text-sm font-semibold text-sand/80 transition hover:text-amber"
+          class="font-mono-retro text-xs uppercase tracking-[0.2em] text-sand/80 transition hover:text-amber"
         >
           {link.label}
         </a>
@@ -48,7 +48,7 @@
       <a
         href="#apply"
         onclick={(e) => goTo(e, '#apply')}
-        class="hidden rounded-full bg-crimson px-5 py-2 text-sm font-semibold text-sand transition hover:bg-rust sm:inline-block"
+        class="font-display hidden rounded-full bg-crimson px-5 py-2 text-sm font-semibold text-sand transition hover:bg-rust sm:inline-block"
       >
         Apply
       </a>
@@ -81,7 +81,7 @@
         <a
           href={link.href}
           onclick={(e) => goTo(e, link.href)}
-          class="rounded-md px-3 py-3 text-sm font-semibold text-sand/90 transition hover:bg-sand/10 hover:text-amber"
+          class="font-mono-retro rounded-md px-3 py-3 text-xs uppercase tracking-[0.2em] text-sand/90 transition hover:bg-sand/10 hover:text-amber"
         >
           {link.label}
         </a>
@@ -89,7 +89,7 @@
       <a
         href="#apply"
         onclick={(e) => goTo(e, '#apply')}
-        class="mt-2 rounded-full bg-crimson px-5 py-3 text-center text-sm font-semibold text-sand"
+        class="font-display mt-2 rounded-full bg-crimson px-5 py-3 text-center text-sm font-semibold text-sand"
       >
         Apply
       </a>

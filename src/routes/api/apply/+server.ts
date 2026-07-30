@@ -3,7 +3,7 @@ import type { RequestHandler } from './$types';
 import { google } from 'googleapis';
 import { env } from '$env/dynamic/private';
 
-const SHEET_RANGE = 'Sheet1!A:I';
+const SHEET_RANGE = env.GOOGLE_SHEETS_RANGE || 'Sheet1!A:H';
 const EMAIL_COLUMN_INDEX = 2;
 
 function getSheetsClient() {
@@ -41,30 +41,38 @@ export const POST: RequestHandler = async ({ request }) => {
 
   const sheets = getSheetsClient();
 
-  const existing = await sheets.spreadsheets.values.get({
-    spreadsheetId,
-    range: SHEET_RANGE
-  });
+  try {
+    const existing = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: SHEET_RANGE
+    });
 
-  const rows = existing.data.values ?? [];
-  const alreadyApplied = rows.some(
-    (row) => (row[EMAIL_COLUMN_INDEX] ?? '').toString().trim().toLowerCase() === email
-  );
+    const rows = existing.data.values ?? [];
+    const alreadyApplied = rows.some(
+      (row) => (row[EMAIL_COLUMN_INDEX] ?? '').toString().trim().toLowerCase() === email
+    );
 
-  if (alreadyApplied) {
-    return json({ error: "Looks like you've already applied with this email." }, { status: 409 });
-  }
-
-  await sheets.spreadsheets.values.append({
-    spreadsheetId,
-    range: SHEET_RANGE,
-    valueInputOption: 'USER_ENTERED',
-    requestBody: {
-      values: [
-        [new Date().toISOString(), name, email, team, year, track, division, shirtSize, dietaryRestriction]
-      ]
+    if (alreadyApplied) {
+      return json({ error: "Looks like you've already applied with this email." }, { status: 409 });
     }
-  });
 
-  return json({ success: true });
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: SHEET_RANGE,
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values: [
+          [new Date().toISOString(), name, email, team, year, track, division, shirtSize, dietaryRestriction]
+        ]
+      }
+    });
+
+    return json({ success: true });
+  } catch (error) {
+    console.error('Google Sheets request failed:', error);
+    return json(
+      { error: 'Could not reach the sheet. Check GOOGLE_SHEETS_ID, GOOGLE_SHEETS_RANGE, and that the sheet is shared with the service account.' },
+      { status: 500 }
+    );
+  }
 };
