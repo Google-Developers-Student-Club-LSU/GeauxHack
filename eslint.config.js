@@ -20,7 +20,11 @@ export default defineConfig(
 		rules: {
 			// typescript-eslint strongly recommend that you do not use the no-undef lint rule on TypeScript projects.
 			// see: https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
-			'no-undef': 'off'
+			'no-undef': 'off',
+			// Single-route site: internal links are same-page hash anchors (smooth-scrolled via
+			// Lenis in Header.goTo) and everything else is an external absolute URL, so there is
+			// no SvelteKit route id for resolve() to map.
+			'svelte/no-navigation-without-resolve': 'off'
 		}
 	},
 	{
