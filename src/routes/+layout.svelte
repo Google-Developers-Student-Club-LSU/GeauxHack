@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
 
 	import 'lenis/dist/lenis.css';
 	import Lenis from 'lenis';
@@ -50,6 +49,9 @@
 	});
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
+<svelte:head>
+	<link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+</svelte:head>
 <Header {lenis} />
 {@render children()}
