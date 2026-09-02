@@ -213,7 +213,6 @@ main {
 	--pulse-color: var(--color-amber);
 	position: relative;
 	isolation: isolate;
-	overflow: hidden;
 }
 
 .button-primary::before,
@@ -270,52 +269,40 @@ main {
 	border: 1px solid color-mix(in srgb, var(--pulse-color, var(--color-amber)) 60%, transparent);
 }
 
-.button-primary:hover::before,
-.button-secondary:hover::before,
-.inline-link:hover::before,
-.division-card:hover::before,
-.sponsor-tile:hover::before,
-.map-frame:hover::before,
-.faq-item:hover::before,
-.faq-trigger:hover::before {
-	animation:
-		border-pulse-in 420ms cubic-bezier(0.16, 0.9, 0.24, 1) both,
-		border-pulse-breathe 1.4s ease-in-out 420ms infinite;
-}
+@media (hover: hover) and (pointer: fine) {
+	.button-primary:hover::before,
+	.button-secondary:hover::before,
+	.inline-link:hover::before,
+	.division-card:hover::before,
+	.sponsor-tile:hover::before,
+	.map-frame:hover::before,
+	.faq-item:hover::before,
+	.faq-trigger:hover::before {
+		animation:
+			border-pulse-in 420ms cubic-bezier(0.16, 0.9, 0.24, 1) both,
+			border-pulse-breathe 1.4s ease-in-out 420ms infinite;
+	}
 
-.button-primary:hover::after,
-.button-secondary:hover::after,
-.inline-link:hover::after,
-.division-card:hover::after,
-.sponsor-tile:hover::after,
-.map-frame:hover::after,
-.faq-item:hover::after,
-.faq-trigger:hover::after {
-	animation: border-pulse-echo 620ms cubic-bezier(0.16, 0.9, 0.24, 1) 140ms both;
-}
+	.button-primary:hover::after,
+	.button-secondary:hover::after,
+	.inline-link:hover::after,
+	.division-card:hover::after,
+	.sponsor-tile:hover::after,
+	.map-frame:hover::after,
+	.faq-item:hover::after,
+	.faq-trigger:hover::after {
+		animation: border-pulse-echo 620ms cubic-bezier(0.16, 0.9, 0.24, 1) 140ms both;
+	}
 
-.button-primary,
-.button-secondary,
-.inline-link,
-.division-card,
-.sponsor-tile,
-.map-frame,
-.faq-item {
-	transition:
-		border-color 260ms ease,
-		transform 260ms ease,
-		background-color 260ms ease,
-		box-shadow 260ms ease;
-}
-
-.button-primary:hover,
-.button-secondary:hover,
-.inline-link:hover,
-.division-card:hover,
-.sponsor-tile:hover,
-.map-frame:hover,
-.faq-item:hover {
-	border-color: var(--pulse-color, var(--color-amber));
+	.button-primary:hover,
+	.button-secondary:hover,
+	.inline-link:hover,
+	.division-card:hover,
+	.sponsor-tile:hover,
+	.map-frame:hover,
+	.faq-item:hover {
+		border-color: var(--pulse-color, var(--color-amber));
+	}
 }
 
 .division-card.crimson {
@@ -384,9 +371,11 @@ main {
 	color: var(--color-sand);
 }
 
-.button-primary:hover {
-	transform: translateY(-3px);
-	background: var(--color-rust);
+@media (hover: hover) and (pointer: fine) {
+	.button-primary:hover {
+		transform: translateY(-3px);
+		background: var(--color-rust);
+	}
 }
 
 .button-secondary {
@@ -395,10 +384,12 @@ main {
 	font-size: 0.9rem;
 }
 
-.button-secondary:hover,
-.inline-link:hover {
-	transform: translateX(4px);
-	color: var(--color-amber);
+@media (hover: hover) and (pointer: fine) {
+	.button-secondary:hover,
+	.inline-link:hover {
+		transform: translateX(4px);
+		color: var(--color-amber);
+	}
 }
 
 .inline-link {
@@ -453,9 +444,11 @@ main {
 		background-color 240ms ease;
 }
 
-.division-card:hover {
-	transform: translateY(-8px);
-	background: rgba(39, 62, 71, 0.9);
+@media (hover: hover) and (pointer: fine) {
+	.division-card:hover {
+		transform: translateY(-8px);
+		background: rgba(39, 62, 71, 0.9);
+	}
 }
 
 .division-arrow {
@@ -488,12 +481,14 @@ main {
 		box-shadow 280ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.sponsor-tile:hover {
-	transform: translateY(-6px);
-	background: rgba(39, 62, 71, 0.9);
-	box-shadow:
-		0 0.9rem 1.9rem rgba(0, 0, 0, 0.3),
-		0 0 1.5rem color-mix(in srgb, var(--pulse-color, var(--color-amber)) 30%, transparent);
+@media (hover: hover) and (pointer: fine) {
+	.sponsor-tile:hover {
+		transform: translateY(-6px);
+		background: rgba(39, 62, 71, 0.9);
+		box-shadow:
+			0 0.9rem 1.9rem rgba(0, 0, 0, 0.3),
+			0 0 1.5rem color-mix(in srgb, var(--pulse-color, var(--color-amber)) 30%, transparent);
+	}
 }
 
 .tile-swap {
@@ -528,14 +523,16 @@ main {
 	pointer-events: none;
 }
 
-.sponsor-tile:hover .tile-front {
-	opacity: 0;
-	transform: translateY(-0.6rem) scale(0.94);
-}
+@media (hover: hover) and (pointer: fine) {
+	.sponsor-tile:hover .tile-front {
+		opacity: 0;
+		transform: translateY(-0.6rem) scale(0.94);
+	}
 
-.sponsor-tile:hover .tile-back {
-	opacity: 1;
-	transform: none;
+	.sponsor-tile:hover .tile-back {
+		opacity: 1;
+		transform: none;
+	}
 }
 
 .sponsor-logo {
@@ -565,7 +562,13 @@ a.sponsor-tile {
 		transform 220ms ease;
 }
 
-.sponsor-tile:hover .tile-link-glyph,
+@media (hover: hover) and (pointer: fine) {
+	.sponsor-tile:hover .tile-link-glyph {
+		color: var(--pulse-color, var(--color-amber));
+		transform: translate(3px, -3px);
+	}
+}
+
 .sponsor-tile:focus-visible .tile-link-glyph {
 	color: var(--pulse-color, var(--color-amber));
 	transform: translate(3px, -3px);
@@ -681,13 +684,23 @@ a.sponsor-tile {
 	text-transform: uppercase;
 }
 
-.faq-item:not(.faq-open):hover .faq-front,
+@media (hover: hover) and (pointer: fine) {
+	.faq-item:not(.faq-open):hover .faq-front {
+		opacity: 0;
+		transform: translateY(-0.35rem);
+	}
+
+	.faq-item:not(.faq-open):hover .faq-back {
+		opacity: 1;
+		transform: none;
+	}
+}
+
 .faq-item:not(.faq-open):has(.faq-trigger:focus-visible) .faq-front {
 	opacity: 0;
 	transform: translateY(-0.35rem);
 }
 
-.faq-item:not(.faq-open):hover .faq-back,
 .faq-item:not(.faq-open):has(.faq-trigger:focus-visible) .faq-back {
 	opacity: 1;
 	transform: none;

@@ -235,7 +235,7 @@
 	<div class="space-object drifting-rocket" data-parallax="0.75" aria-hidden="true">◢</div>
 	<section
 		id="home"
-		class="hero-section section-shell relative isolate flex min-h-dvh flex-col overflow-hidden px-6 pt-28 pb-20 md:px-10"
+		class="hero-section section-shell relative isolate flex min-h-dvh flex-col px-6 pt-28 pb-20 md:px-10"
 	>
 		<div
 			class="absolute top-24 -right-24 -z-10 h-64 w-64 rounded-full bg-crimson/20 blur-3xl"
