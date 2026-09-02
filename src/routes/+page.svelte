@@ -81,7 +81,7 @@
 		{ name: 'LSU', logo: '/sponsors/lsu.svg', url: 'https://www.lsu.edu' }
 	];
 
-	const HACKATHON_START = new Date('2026-10-23T00:00:00-05:00');
+	const HACKATHON_START = new Date('2026-10-23T18:00:00-05:00');
 	const FORM_URL = 'https://forms.gle/1nrUX5biKEEkatmx8';
 	const MAP_URL =
 		'https://www.google.com/maps?q=Patrick+F.+Taylor+Hall,+Baton+Rouge,+LA&output=embed';
