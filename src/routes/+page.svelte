@@ -398,10 +398,6 @@
 						target="_blank"
 						rel="noreferrer"
 					>
-						<span class="font-mono-retro text-[0.6rem] tracking-[0.18em] text-sand/45 uppercase"
-							>Partner {String(i + 1).padStart(2, '0')}</span
-						>
-						<span class="tile-link-glyph" aria-hidden="true">↗</span>
 						<div class="tile-swap">
 							<div class="tile-face tile-front">
 								<strong class="font-display text-lg text-sand/85">{sponsor.name}</strong>
