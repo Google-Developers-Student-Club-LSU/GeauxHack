@@ -46,7 +46,7 @@
 		},
 		{
 			question: 'How much does it cost?',
-			teaser: 'Free — food and snacks included',
+			teaser: 'Free - food and snacks included',
 			answer:
 				'Nothing! The hackathon is completely free to attend and participate in. We will provide food, drinks, and snacks throughout the hackathon at no cost to participants.'
 		},
@@ -58,7 +58,7 @@
 		},
 		{
 			question: 'Will there be food and swag?',
-			teaser: 'Yes — shirts if you apply early',
+			teaser: 'Yes - shirts if you apply early',
 			answer:
 				'Yes! All food, drinks, and snacks provided during the hackathon are completely free. Vegetarian options will be available. There are also plenty of dining options in the LSU Student Union, just a short 5-minute walk away. Apply by September 30th to receive a free hackathon T-shirt!'
 		},
