@@ -18,7 +18,7 @@
 		},
 		{
 			question: 'Who can attend?',
-			teaser: 'High school + undergrad, every level',
+			teaser: 'High school + college, every level',
 			answer:
 				'Our hackathon is open to high school, undergraduate, and graduate students from any school in the United States. Students of all coding backgrounds and experience levels are encouraged to participate. We will have beginner and advanced brackets so you can compete alongside hackers at a similar experience level. Anyone interested in helping as a volunteer or mentor is also welcome.'
 		},
@@ -55,15 +55,15 @@
 
 	const sponsors: Sponsor[] = [
 		{ name: 'Deepspace' },
-		{ name: 'lumix' },
-		{ name: 'nexus' },
+		{ name: 'Lumix' },
+		{ name: 'Nexus' },
 		{ name: 'Google' }
 	];
 
 	const clubs: Sponsor[] = [
 		{ name: 'GDG on Campus', logo: '/sponsors/gdg.png', url: 'https://gdsclsu.org' },
 		{ name: 'SASE LSU', logo: '/sponsors/sase.png', url: 'https://saselsu.org' },
-		{ name: 'LSU', logo: '/sponsors/lsu.svg', url: 'https://www.lsu.edu' }
+		{ name: 'LSU', logo: '/sponsors/lsu.png', url: 'https://www.lsu.edu' }
 	];
 
 	const HACKATHON_START = new Date('2026-10-23T18:00:00-05:00');
@@ -441,10 +441,10 @@
 					>
 						<div class="tile-swap">
 							<div class="tile-face tile-front">
-								<strong class="font-display text-lg text-sand/85">{sponsor.name}</strong>
+								<strong class="font-display text-lg text-sand/85">{club.name}</strong>
 							</div>
 							<div class="tile-face tile-back" aria-hidden="true">
-								<img class="sponsor-logo" src={sponsor.logo} alt={`${sponsor.name} logo`} />
+								<img class="sponsor-logo" src={club.logo} alt={`${club.name} logo`} />
 							</div>
 						</div>
 					</a>
