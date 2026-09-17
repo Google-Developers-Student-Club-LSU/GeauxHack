@@ -136,6 +136,36 @@ input {
 	align-items: center;
 }
 
+/* Flex centering makes block children shrink to their max-content width, which
+   insets sections relative to each other. Pin every section container to the
+   full content width so all sections share one left/right rhythm. */
+.section-shell > .mx-auto {
+	width: 100%;
+	min-width: 0;
+}
+
+/* Shared heading block: the title column is sized to the title's own
+   max-content width so the authored line breaks survive, and the supporting
+   copy takes the remaining space. */
+.section-heading {
+	display: grid;
+	gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+	.section-heading {
+		grid-template-columns: auto minmax(0, 1fr);
+		gap: 2.5rem 3rem;
+		align-items: end;
+	}
+
+	/* Sections whose supporting column is much taller than the title read
+	   better with the heading centered against it. */
+	.section-heading.center {
+		align-items: center;
+	}
+}
+
 main {
 	width: 100%;
 	overflow-x: clip;
@@ -203,7 +233,6 @@ main {
 .button-primary,
 .button-secondary,
 .inline-link,
-.division-card,
 .sponsor-tile,
 .map-frame,
 .faq-item,
@@ -218,7 +247,6 @@ main {
 .button-primary::before,
 .button-secondary::before,
 .inline-link::before,
-.division-card::before,
 .sponsor-tile::before,
 .map-frame::before,
 .faq-item::before,
@@ -226,7 +254,6 @@ main {
 .button-primary::after,
 .button-secondary::after,
 .inline-link::after,
-.division-card::after,
 .sponsor-tile::after,
 .map-frame::after,
 .faq-item::after,
@@ -248,7 +275,6 @@ main {
 .button-primary::before,
 .button-secondary::before,
 .inline-link::before,
-.division-card::before,
 .sponsor-tile::before,
 .map-frame::before,
 .faq-item::before,
@@ -261,7 +287,6 @@ main {
 .button-primary::after,
 .button-secondary::after,
 .inline-link::after,
-.division-card::after,
 .sponsor-tile::after,
 .map-frame::after,
 .faq-item::after,
@@ -273,7 +298,6 @@ main {
 	.button-primary:hover::before,
 	.button-secondary:hover::before,
 	.inline-link:hover::before,
-	.division-card:hover::before,
 	.sponsor-tile:hover::before,
 	.map-frame:hover::before,
 	.faq-item:hover::before,
@@ -286,7 +310,6 @@ main {
 	.button-primary:hover::after,
 	.button-secondary:hover::after,
 	.inline-link:hover::after,
-	.division-card:hover::after,
 	.sponsor-tile:hover::after,
 	.map-frame:hover::after,
 	.faq-item:hover::after,
@@ -297,19 +320,11 @@ main {
 	.button-primary:hover,
 	.button-secondary:hover,
 	.inline-link:hover,
-	.division-card:hover,
 	.sponsor-tile:hover,
 	.map-frame:hover,
 	.faq-item:hover {
 		border-color: var(--pulse-color, var(--color-amber));
 	}
-}
-
-.division-card.crimson {
-	--pulse-color: var(--color-crimson);
-}
-.division-card.amber {
-	--pulse-color: var(--color-amber);
 }
 
 .button-primary {
@@ -427,7 +442,6 @@ main {
 	gap: 0.25rem;
 }
 
-.division-card,
 .sponsor-tile,
 .map-frame,
 .faq-item {
@@ -435,45 +449,15 @@ main {
 	background: rgba(39, 62, 71, 0.58);
 }
 
-.division-card {
-	min-height: 20rem;
-	padding: 1.4rem;
-	transition:
-		transform 240ms ease,
-		border-color 240ms ease,
-		background-color 240ms ease;
-}
-
-@media (hover: hover) and (pointer: fine) {
-	.division-card:hover {
-		transform: translateY(-8px);
-		background: rgba(39, 62, 71, 0.9);
-	}
-}
-
-.division-arrow {
-	color: var(--color-amber);
-	font-size: 1.4rem;
-}
-
-.division-icon {
-	display: flex;
-	height: 6rem;
-	width: 6rem;
-	align-items: center;
-	justify-content: center;
-	margin: 2.5rem 0 1.3rem;
-	border: 1px solid color-mix(in srgb, var(--color-amber) 45%, transparent);
-	border-radius: 50%;
-	color: var(--color-amber);
-	font-size: 2rem;
-}
-
 .sponsor-tile {
 	display: flex;
 	min-height: 8rem;
 	flex-direction: column;
-	padding: 1.1rem;
+	align-items: center;
+	justify-content: center;
+	gap: 0.9rem;
+	padding: 1.5rem 1.25rem;
+	text-align: center;
 	transition:
 		border-color 220ms ease,
 		transform 280ms cubic-bezier(0.2, 0.7, 0.2, 1),
@@ -491,58 +475,23 @@ main {
 	}
 }
 
-.tile-swap {
-	position: relative;
-	flex: 1 1 auto;
-	display: grid;
-	min-height: 4.2rem;
-	margin-top: 0.5rem;
-}
-
-.tile-face {
-	display: flex;
-	grid-area: 1 / 1;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 0.55rem;
-	text-align: center;
-	transition:
-		opacity 380ms cubic-bezier(0.2, 0.7, 0.2, 1),
-		transform 380ms cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.tile-front {
-	opacity: 1;
-	transform: none;
-}
-
-.tile-back {
-	opacity: 0;
-	transform: translateY(0.6rem) scale(0.94);
-	pointer-events: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-	.sponsor-tile:hover .tile-front {
-		opacity: 0;
-		transform: translateY(-0.6rem) scale(0.94);
-	}
-
-	.sponsor-tile:hover .tile-back {
-		opacity: 1;
-		transform: none;
-	}
+.tile-name {
+	font-family: var(--font-display);
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+	color: color-mix(in srgb, var(--color-sand) 92%, transparent);
 }
 
 .sponsor-logo {
 	display: block;
-	max-height: 3.2rem;
+	max-height: 3rem;
 	max-width: 85%;
 	object-fit: contain;
-	padding: 0.45rem 0.9rem;
+	padding: 0.4rem 0.85rem;
 	background: rgba(247, 243, 233, 0.94);
-	border-radius: 0.45rem;
+	border-radius: 0.5rem;
 }
 
 a.sponsor-tile {
@@ -577,27 +526,6 @@ a.sponsor-tile {
 .sponsor-tile:focus-visible {
 	outline: 2px solid color-mix(in srgb, var(--pulse-color, var(--color-amber)) 65%, transparent);
 	outline-offset: 3px;
-}
-
-.sponsor-tile:focus-visible .tile-front {
-	opacity: 0;
-	transform: translateY(-0.6rem) scale(0.94);
-}
-
-.sponsor-tile:focus-visible .tile-back {
-	opacity: 1;
-	transform: none;
-}
-
-@media (hover: none) {
-	.sponsor-tile .tile-front {
-		opacity: 0;
-	}
-
-	.sponsor-tile .tile-back {
-		opacity: 1;
-		transform: none;
-	}
 }
 
 .map-frame {
@@ -782,9 +710,6 @@ a.sponsor-tile {
 	.hero-title {
 		font-size: clamp(3.4rem, 14vw, 5rem);
 	}
-	.division-card {
-		min-height: auto;
-	}
 	.hero-flyer {
 		height: clamp(12rem, 30vh, 20rem);
 	}
@@ -800,6 +725,17 @@ a.sponsor-tile {
 	}
 	.faq-trigger {
 		padding: 1.1rem;
+	}
+	.sponsor-tile {
+		min-height: 7rem;
+		gap: 0.7rem;
+		padding: 1.25rem 0.9rem;
+	}
+	.tile-name {
+		font-size: 1.1rem;
+	}
+	.sponsor-logo {
+		max-height: 2.4rem;
 	}
 }
 

@@ -3,33 +3,11 @@
 	import { reveal } from '$lib/reveal';
 	import { pulse } from '$lib/pulse';
 
-	interface Division {
-		name: string;
-		category: string;
-		description: string;
-		accent: string;
-	}
-
 	interface Faq {
 		question: string;
 		answer: string;
 		teaser: string;
 	}
-
-	const divisions: Division[] = [
-		{
-			name: 'Beginner',
-			category: 'New builders',
-			description: 'A welcoming division for first-time hackers and anyone learning the ropes.',
-			accent: 'crimson'
-		},
-		{
-			name: 'Advanced',
-			category: 'Seasoned builders',
-			description: 'Push your technical limits with ambitious ideas and polished prototypes.',
-			accent: 'amber'
-		}
-	];
 
 	const faqs: Faq[] = [
 		{
@@ -42,7 +20,7 @@
 			question: 'Who can attend?',
 			teaser: 'High school + undergrad, every level',
 			answer:
-				'Our hackathon is open to high school and undergraduate students from any school in the United States. Students of all coding backgrounds and experience levels are encouraged to participate. We will have beginner and advanced brackets so you can compete alongside hackers at a similar experience level. Anyone interested in helping as a volunteer or mentor is also welcome.'
+				'Our hackathon is open to high school, undergraduate, and graduate students from any school in the United States. Students of all coding backgrounds and experience levels are encouraged to participate. We will have beginner and advanced brackets so you can compete alongside hackers at a similar experience level. Anyone interested in helping as a volunteer or mentor is also welcome.'
 		},
 		{
 			question: 'How much does it cost?',
@@ -71,11 +49,18 @@
 	];
 	interface Sponsor {
 		name: string;
-		logo: string;
-		url: string;
+		logo?: string;
+		url?: string;
 	}
 
 	const sponsors: Sponsor[] = [
+		{ name: 'Deepspace' },
+		{ name: 'lumix' },
+		{ name: 'nexus' },
+		{ name: 'Google' }
+	];
+
+	const clubs: Sponsor[] = [
 		{ name: 'GDG on Campus', logo: '/sponsors/gdg.png', url: 'https://gdsclsu.org' },
 		{ name: 'SASE LSU', logo: '/sponsors/sase.png', url: 'https://saselsu.org' },
 		{ name: 'LSU', logo: '/sponsors/lsu.svg', url: 'https://www.lsu.edu' }
@@ -235,7 +220,7 @@
 	<div class="space-object drifting-rocket" data-parallax="0.75" aria-hidden="true">◢</div>
 	<section
 		id="home"
-		class="hero-section section-shell relative isolate flex min-h-dvh flex-col px-6 pt-28 pb-20 md:px-10"
+		class="hero-section section-shell relative isolate flex min-h-dvh flex-col px-6 pt-24 pb-10 md:px-10"
 	>
 		<div
 			class="absolute top-24 -right-24 -z-10 h-64 w-64 rounded-full bg-crimson/20 blur-3xl"
@@ -263,11 +248,19 @@
 							Geaux<span class="text-amber">Hack</span>
 							<span class="block text-crimson">'26</span>
 						</h1>
-						<p class="mt-6 max-w-2xl text-xl leading-relaxed text-sand/80 md:text-2xl">
+						<p class="mt-5 max-w-2xl text-xl leading-relaxed text-sand/80 md:text-2xl">
 							Build boldly. Learn together. Ship something that makes you proud. GeauxHack is a
 							free, student-led weekend of creativity at LSU.
 						</p>
-						<div class="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+						<div
+							class="mt-5 flex flex-wrap gap-3 font-mono-retro text-[0.65rem] tracking-[0.16em] uppercase"
+						>
+							<span class="chip border-amber/45 bg-amber/10 text-amber"
+								>Louisiana's largest hackathon</span
+							>
+							<span class="chip border-sand/20 text-sand/65">October 23–25 · LSU</span>
+						</div>
+						<div class="mt-6 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
 							<a
 								use:pulse
 								href={FORM_URL}
@@ -278,8 +271,21 @@
 							<a use:pulse href="#about" class="button-secondary font-display">Explore the event</a>
 						</div>
 						<div
-							class="mt-8 flex flex-wrap justify-center gap-3 font-mono-retro text-[0.65rem] tracking-[0.2em] text-sand/60 uppercase lg:justify-start"
-						></div>
+							class="mt-6 grid max-w-xl grid-cols-1 gap-2 font-mono-retro text-[0.65rem] tracking-[0.12em] text-sand/65 uppercase sm:grid-cols-3"
+						>
+							<div class="rounded-lg border border-sand/15 bg-slate/55 px-3 py-3">
+								<span class="block text-sand/40">Soft deadline</span>
+								<strong class="mt-1 block text-amber">September 30</strong>
+							</div>
+							<div class="rounded-lg border border-sand/15 bg-slate/55 px-3 py-3">
+								<span class="block text-sand/40">Hard deadline</span>
+								<strong class="mt-1 block text-amber">October 20</strong>
+							</div>
+							<div class="rounded-lg border border-sand/15 bg-slate/55 px-3 py-3">
+								<span class="block text-sand/40">Event</span>
+								<strong class="mt-1 block text-amber">Oct 23–25</strong>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -317,84 +323,119 @@
 		</div>
 	</section>
 
-	<section id="about" class="section-shell px-6 py-24 md:px-10 md:py-36">
-		<div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-			<div use:reveal>
-				<p class="eyebrow">01 / the brief</p>
-				<h2 class="section-title mt-4">Make something<br /><span>worth showing.</span></h2>
-			</div>
-			<div use:reveal={{ delay: 100 }} class="max-w-2xl lg:pb-2">
-				<p class="text-xl leading-relaxed text-sand/90 md:text-2xl">
-					GeauxHack brings curious students together for one focused weekend of building,
-					experimenting, and sharing ideas.
-				</p>
-				<p class="mt-6 leading-relaxed text-sand/65">
-					You do not need a perfect idea or years of experience. Bring a question, a sketch, or a
-					completely unreasonable concept. Find a team, learn something new, and leave with a
-					project you can call your own.
-				</p>
-				<a use:pulse href="#faq" class="inline-link mt-8">Read the FAQ <span>→</span></a>
+	<section id="about" class="section-shell px-6 py-24 md:px-10 md:py-32">
+		<div class="mx-auto max-w-6xl">
+			<div class="section-heading">
+				<div use:reveal>
+					<p class="eyebrow">01 / the brief</p>
+					<h2 class="section-title mt-4">Make something<br /><span>worth showing.</span></h2>
+				</div>
+				<div use:reveal={{ delay: 100 }} class="max-w-2xl">
+					<p class="text-xl leading-relaxed text-sand/90 md:text-2xl">
+						GeauxHack brings curious students together for one focused weekend of building,
+						experimenting, and sharing ideas.
+					</p>
+					<p class="mt-6 leading-relaxed text-sand/65">
+						You do not need a perfect idea or years of experience. Bring a question, a sketch, or a
+						completely unreasonable concept. Find a team, learn something new, and leave with a
+						project you can call your own.
+					</p>
+					<a use:pulse href="#faq" class="inline-link mt-8">Read the FAQ <span>→</span></a>
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<section
-		id="divisions"
-		class="section-shell border-y border-sand/10 bg-slate/70 px-6 py-24 md:px-10 md:py-32"
+		id="prizes"
+		class="section-shell border-y border-sand/10 bg-crimson/10 px-6 py-24 md:px-10 md:py-32"
 	>
 		<div class="mx-auto max-w-6xl">
-			<div use:reveal class="flex flex-col justify-between gap-5 md:flex-row md:items-end">
-				<div>
-					<p class="eyebrow">02 / choose your route</p>
-					<h2 class="section-title mt-4">Two ways<br /><span>to geaux.</span></h2>
+			<div class="section-heading center">
+				<div use:reveal>
+					<p class="eyebrow">02 / more than a weekend</p>
+					<h2 class="section-title mt-4">Build for<br /><span>the upside.</span></h2>
 				</div>
-				<p class="max-w-sm text-sm leading-relaxed text-sand/60 md:text-right">
-					Start where you are. The best project is the one you are excited to keep building.
-				</p>
-			</div>
-
-			<div class="mx-auto mt-14 grid max-w-3xl gap-5 md:grid-cols-2">
-				{#each divisions as division, i (division.name)}
-					<article
-						use:reveal={{ delay: i * 90 }}
-						use:pulse
-						class={`division-card ${division.accent}`}
-					>
-						<div class="flex items-start justify-between">
-							<span class="font-mono-retro text-xs text-sand/50">0{i + 1}</span>
-							<span class="division-arrow">↗</span>
+				<div use:reveal={{ delay: 100 }}>
+					<p class="font-display text-4xl leading-tight font-bold text-amber md:text-6xl">
+						$5,000+ <span class="text-sand/85">in prizes, credits, and opportunities.</span>
+					</p>
+					<p class="mt-6 max-w-2xl text-lg leading-relaxed text-sand/75">
+						Hackers can compete for services and credits that keep their ideas moving after the
+						event, plus top-3 placements across both the Beginner and Advanced brackets.
+					</p>
+					<div class="mt-8 grid gap-3 sm:grid-cols-3">
+						<div class="border border-sand/15 bg-slate/55 p-4">
+							<p class="font-mono-retro text-[0.65rem] tracking-[0.15em] text-amber uppercase">
+								01
+							</p>
+							<p class="mt-3 font-display text-lg font-semibold text-sand">Beginner bracket</p>
+							<p class="mt-1 text-sm text-sand/60">Top 3 placements</p>
 						</div>
-						<div class="division-icon" aria-hidden="true">{i === 0 ? '✦' : '◉'}</div>
-						<p class="font-mono-retro text-[0.65rem] tracking-[0.2em] text-sand/55 uppercase">
-							{division.category}
-						</p>
-						<h3 class="mt-2 font-display text-2xl font-bold text-sand">{division.name}</h3>
-						<p class="mt-4 text-sm leading-relaxed text-sand/65">{division.description}</p>
-					</article>
-				{/each}
+						<div class="border border-sand/15 bg-slate/55 p-4">
+							<p class="font-mono-retro text-[0.65rem] tracking-[0.15em] text-amber uppercase">
+								02
+							</p>
+							<p class="mt-3 font-display text-lg font-semibold text-sand">Advanced bracket</p>
+							<p class="mt-1 text-sm text-sand/60">Top 3 placements</p>
+						</div>
+						<div class="border border-sand/15 bg-slate/55 p-4">
+							<p class="font-mono-retro text-[0.65rem] tracking-[0.15em] text-amber uppercase">
+								03
+							</p>
+							<p class="mt-3 font-display text-lg font-semibold text-sand">Keep building</p>
+							<p class="mt-1 text-sm text-sand/60">Services + credits</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<section id="sponsors" class="section-shell px-6 py-24 md:px-10 md:py-32">
 		<div class="mx-auto max-w-6xl">
-			<div use:reveal class="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
-				<div>
+			<div class="section-heading">
+				<div use:reveal>
 					<p class="eyebrow">03 / the people behind it</p>
-					<h2 class="section-title mt-4">Powered by<br /><span>community.</span></h2>
+					<h2 class="section-title mt-4">Backed by<br /><span>builders.</span></h2>
 				</div>
-				<p class="max-w-xl text-lg leading-relaxed text-sand/70">
-					GeauxHack is made possible by mentors, volunteers, campus organizations, and sponsors who
-					believe students should have room to try big things.
+				<p use:reveal={{ delay: 100 }} class="max-w-xl text-lg leading-relaxed text-sand/70">
+					Our confirmed sponsors are helping make the GeauxHack experience possible with prizes,
+					credits, and opportunities for hackers.
 				</p>
 			</div>
-			<div class="mt-14 grid grid-cols-2 gap-4 md:grid-cols-3">
+			<div class="mt-12 grid grid-cols-2 gap-4 md:mt-14 lg:grid-cols-4">
 				{#each sponsors as sponsor, i (sponsor.name)}
+					<div use:reveal={{ delay: i * 70 }} use:pulse class="sponsor-tile">
+						<span class="tile-name">{sponsor.name}</span>
+					</div>
+				{/each}
+			</div>
+		</div>
+	</section>
+
+	<section
+		id="community"
+		class="section-shell border-y border-sand/10 bg-slate/70 px-6 py-24 md:px-10 md:py-32"
+	>
+		<div class="mx-auto max-w-6xl">
+			<div class="section-heading">
+				<div use:reveal>
+					<p class="eyebrow">04 / campus community</p>
+					<h2 class="section-title mt-4">Built with<br /><span>our clubs.</span></h2>
+				</div>
+				<p use:reveal={{ delay: 100 }} class="max-w-xl text-lg leading-relaxed text-sand/70">
+					GeauxHack is also powered by the student organizations and campus communities bringing
+					hackers together at LSU.
+				</p>
+			</div>
+			<div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-14 lg:grid-cols-3">
+				{#each clubs as club, i (club.name)}
 					<a
 						use:reveal={{ delay: i * 70 }}
 						use:pulse
 						class="sponsor-tile"
-						href={sponsor.url}
+						href={club.url}
 						target="_blank"
 						rel="noreferrer"
 					>
@@ -418,7 +459,7 @@
 	>
 		<div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
 			<div use:reveal>
-				<p class="eyebrow">04 / find us</p>
+				<p class="eyebrow">05 / find us</p>
 				<h2 class="section-title mt-4">Meet us<br /><span>at PFT.</span></h2>
 				<p class="mt-6 max-w-md leading-relaxed text-sand/70">
 					The event will take place at Patrick F. Taylor Hall (PFT) on LSU's campus in Baton Rouge,
@@ -447,7 +488,7 @@
 	<section id="faq" class="section-shell px-6 py-24 md:px-10 md:py-32">
 		<div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.65fr_1.35fr]">
 			<div use:reveal>
-				<p class="eyebrow">05 / no silly questions</p>
+				<p class="eyebrow">06 / no silly questions</p>
 				<h2 class="section-title mt-4">Good to<br /><span>know.</span></h2>
 			</div>
 			<div class="space-y-3">

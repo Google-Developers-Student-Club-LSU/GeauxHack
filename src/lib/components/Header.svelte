@@ -7,8 +7,10 @@
 
 	const links = [
 		{ label: 'About', href: '#about' },
-		{ label: 'Divisions', href: '#divisions' },
+		{ label: 'Prizes', href: '#prizes' },
 		{ label: 'Sponsors', href: '#sponsors' },
+		{ label: 'Clubs', href: '#community' },
+		{ label: 'Location', href: '#location' },
 		{ label: 'FAQ', href: '#faq' }
 	];
 
@@ -37,7 +39,7 @@
 			GeauxHack '26
 		</a>
 
-		<nav class="hidden items-center gap-8 md:flex">
+		<nav class="hidden items-center gap-5 md:flex lg:gap-8">
 			{#each links as link (link.href)}
 				<a
 					href={link.href}
