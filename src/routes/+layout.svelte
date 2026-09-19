@@ -6,7 +6,6 @@
 	import Header from '$lib/components/Header.svelte';
 
 	let { children }: { children: Snippet } = $props();
-
 </script>
 
 <svelte:head>

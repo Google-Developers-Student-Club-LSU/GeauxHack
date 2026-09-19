@@ -8,8 +8,7 @@
 	const links = [
 		{ label: 'About', href: '#about' },
 		{ label: 'Prizes', href: '#prizes' },
-		{ label: 'Sponsors', href: '#sponsors' },
-		{ label: 'Clubs', href: '#community' },
+		{ label: 'Partners', href: '#partners' },
 		{ label: 'Location', href: '#location' },
 		{ label: 'FAQ', href: '#faq' }
 	];
@@ -30,7 +29,7 @@
 </script>
 
 <header class="fixed inset-x-0 top-0 z-50 border-b border-sand/10 bg-slate/70 backdrop-blur-md">
-	<div class="flex w-full items-center justify-between px-6 py-4 md:px-12 lg:px-20">
+	<div class="shell flex items-center justify-between py-4">
 		<a
 			href="#home"
 			onclick={(e) => goTo(e, '#home')}
@@ -39,12 +38,12 @@
 			GeauxHack '26
 		</a>
 
-		<nav class="hidden items-center gap-5 md:flex lg:gap-8">
+		<nav class="hidden items-center gap-6 md:flex lg:gap-9">
 			{#each links as link (link.href)}
 				<a
 					href={link.href}
 					onclick={(e) => goTo(e, link.href)}
-					class="font-mono-retro text-xs tracking-[0.2em] text-sand/80 uppercase transition hover:text-amber"
+					class="nav-link font-mono-retro text-xs tracking-[0.2em] text-sand/80 uppercase transition hover:text-amber"
 				>
 					{link.label}
 				</a>
@@ -56,7 +55,7 @@
 				href={FORM_URL}
 				target="_blank"
 				rel="noreferrer"
-				class="hidden rounded-full bg-crimson px-5 py-2 font-display text-sm font-semibold text-sand transition hover:bg-rust sm:inline-block"
+				class="hidden rounded-full bg-crimson px-5 py-2 font-display text-sm font-semibold text-sand shadow-[0_0.35rem_1rem_rgba(164,36,59,0.35)] transition hover:-translate-y-0.5 hover:bg-rust sm:inline-block"
 			>
 				Apply
 			</a>
@@ -64,7 +63,7 @@
 			<button
 				type="button"
 				onclick={() => (mobileOpen = !mobileOpen)}
-				class="flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
+				class="flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
 				aria-label="Toggle menu"
 				aria-expanded={mobileOpen}
 			>
@@ -85,7 +84,7 @@
 	</div>
 
 	{#if mobileOpen}
-		<nav class="flex flex-col gap-1 border-t border-sand/10 bg-slate/95 px-6 py-4 md:hidden">
+		<nav class="shell flex flex-col gap-1 border-t border-sand/10 bg-slate/95 py-4 md:hidden">
 			{#each links as link (link.href)}
 				<a
 					href={link.href}
